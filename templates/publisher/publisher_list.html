@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <title>Django CRUD application!</title>
+</head>
+<body>
+<div class="container">
+    <h1>Publisher List!</h1>
+    <ul>
+        {% for post in object_list %}
+            <li><p>Post ID: <a href="{% url "publisher:update_publisher" post.id %}">{{ post.id }}</a></p>
+
+                <p>Author: {{ post.Author }} </p>
+                <p>Book: {{ post.Book }} </p>
+                <p>Address: {{ post.address }} </p>
+                <p>City: {{ post.city }} </p>
+                <p>State_Province: {{ post.state_province }} </p>
+                <p>Country: {{ post.country }} </p>
+
+                <a href="{% url "publisher:delete_publisher" post.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url "publisher:create_publisher" %}">New Publisher entry</a>
+</div>
+</body>
+</html>
+
