@@ -26,8 +26,8 @@ def create_publisher(request, template_name='publisher/Publisher_form.html'):
 
 
 def update_publisher(request, pk, template_name='publisher/Publisher_form.html'):
-    post = get_object_or_404(Publisher, pk=pk)
-    form = PublisherForm(request.POST or None, instance=post)
+    publisher = get_object_or_404(Publisher, pk=pk)
+    form = PublisherForm(request.POST or None, instance=publisher)
     if form.is_valid():
         form.save()
         return redirect('publisher:publisher_list')
@@ -35,8 +35,8 @@ def update_publisher(request, pk, template_name='publisher/Publisher_form.html')
 
 
 def delete_publisher(request, pk, template_name='publisher/delete_publisher.html'):
-    post = get_object_or_404(Publisher, pk=pk)
+    publisher = get_object_or_404(Publisher, pk=pk)
     if request.method == 'POST':
-        post.delete()
+        publisher.delete()
         return redirect('publisher:publisher_list')
-    return render(request, template_name, {'object': post})
+    return render(request, template_name, {'object': publisher})
