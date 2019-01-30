@@ -7,22 +7,35 @@
 </head>
 <body>
 <div class="container">
-    <h1>Publisher List!</h1>
-    <ul>
+
+    <H1 align="center">Publisher List! </H1>
+    <table width="100%">
+        <tr>
+            <td> Publisher ID</td>
+            <td> Author</td>
+            <td>Book</td>
+            <td>Address</td>
+            <td>City</td>
+            <td> State_Province</td>
+            <td>Country</td>
+
+        </tr>
         {% for publisher in object_list %}
-            <li><p>Publisher ID: <a href="{% url "publisher:update_publisher" publisher.id %}">{{ publisher.id }}</a></p>
 
-                <p>Author: {{ publisher.Author }} </p>
-                <p>Book: {{ publisher.Book }} </p>
-                <p>Address: {{ publisher.address }} </p>
-                <p>City: {{ publisher.city }} </p>
-                <p>State_Province: {{ publisher.state_province }} </p>
-                <p>Country: {{ publisher.country }} </p>
+            <tr>
+                <td><a href="{% url "publisher:update_publisher" publisher.id %}">{{ publisher.id }}</a>
+                </td>
 
-                <a href="{% url "publisher:delete_publisher" publisher.id %}">Delete</a>
-            </li>
+                <td> {{ publisher.Author }} </td>
+                <td>{{ publisher.Book }} </td>
+                <td> {{ publisher.address }} </td>
+                <td> {{ publisher.city }} </td>
+                <td> {{ publisher.state_province }} </td>
+                <td> {{ publisher.country }} </td>
+                <td><a href="{% url "publisher:delete_publisher" publisher.id %}">Delete</a></td>
+            </tr>
         {% endfor %}
-    </ul>
+    </table>
 
     <a href="{% url "publisher:create_publisher" %}">New Publisher entry</a>
 </div>

@@ -5,6 +5,7 @@ from django.shortcuts import reverse
 
 
 # Create your models here.
+# publisher model with its attributes
 class Publisher(models.Model):
     Author = models.CharField(max_length=30)
     Book = models.CharField(max_length=30)
