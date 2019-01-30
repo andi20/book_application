@@ -1,41 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <title>Django CRUD application!</title>
+
+    <style>
+        body {
+            background-color: LightGray;
+        }
+
+        h1 {
+            color: black;
+            text-align: center;
+        }
+
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+
+        }
+
+        div {
+            padding: 25px 50px 75px;
+        }
+
+        tr, td {
+            text-align: left;
+            padding: 8px;
+
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #616161;
+            color: white;
+        }
+
+    </style>
+
+
 </head>
+
 <body>
+
 <div class="container">
 
-    <H1 align="center">Publisher List! </H1>
-    <table width="100%">
-        <tr>
-            <td> Publisher ID</td>
-            <td> Author</td>
-            <td>Book</td>
-            <td>Address</td>
-            <td>City</td>
-            <td> State_Province</td>
-            <td>Country</td>
 
-        </tr>
-        {% for publisher in object_list %}
+    <h1>Publisher List</h1>
 
+
+    <div>
+        <table width="100%">
             <tr>
-                <td><a href="{% url "publisher:update_publisher" publisher.id %}">{{ publisher.id }}</a>
-                </td>
+                <th> Publisher ID</th>
+                <th> Author</th>
+                <th>Book</th>
+                <th>Address</th>
+                <th>City</th>
+                <th> State_Province</th>
+                <th>Country</th>
 
-                <td> {{ publisher.Author }} </td>
-                <td>{{ publisher.Book }} </td>
-                <td> {{ publisher.address }} </td>
-                <td> {{ publisher.city }} </td>
-                <td> {{ publisher.state_province }} </td>
-                <td> {{ publisher.country }} </td>
-                <td><a href="{% url "publisher:delete_publisher" publisher.id %}">Delete</a></td>
             </tr>
-        {% endfor %}
-    </table>
+            {% for publisher in object_list %}
+
+                <tr>
+                    <td><a href="{% url "publisher:update_publisher" publisher.id %}">{{ publisher.id }}</a>
+                    </td>
+
+                    <td> {{ publisher.Author }} </td>
+                    <td>{{ publisher.Book }} </td>
+                    <td> {{ publisher.address }} </td>
+                    <td> {{ publisher.city }} </td>
+                    <td> {{ publisher.state_province }} </td>
+                    <td> {{ publisher.country }} </td>
+                    <td><a href="{% url "publisher:delete_publisher" publisher.id %}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 
     <a href="{% url "publisher:create_publisher" %}">New Publisher entry</a>
 </div>

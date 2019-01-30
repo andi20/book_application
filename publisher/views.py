@@ -28,7 +28,7 @@ def create_publisher(request, template_name='publisher/Publisher_form.html'):
     return render(request, template_name, {'form': form})
 
 
-# function to update a publisher
+# function to update a publisher through ID
 def update_publisher(request, pk, template_name='publisher/Publisher_form.html'):
     publisher = get_object_or_404(Publisher, pk=pk)
     form = PublisherForm(request.POST or None, instance=publisher)
